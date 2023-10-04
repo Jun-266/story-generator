@@ -1,9 +1,10 @@
-from pyformlang.finite_automaton import DeterministicFiniteAutomaton,State
+from pyformlang.finite_automaton import DeterministicFiniteAutomaton, State
+
 
 class Automaton:
     def __init__(self):
         self.createAutomaton()
-        self.aut=None
+        self.aut = None
 
     def createAutomaton(self):
         q0=State('q0')

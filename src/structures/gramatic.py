@@ -1,7 +1,9 @@
 from pyformlang.cfg import CFG
+
+
 class Gramatic:
     def __init__(self) -> None:
-        self.gr=None
+        self.gr = None
         self.initiGramatic()
 
     
