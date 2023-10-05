@@ -1,4 +1,6 @@
 import re
+from src.model.story import story_description
+from src.model.story import path_1, path_2, path_3
 
 welcome_message = '¡Bienvenido al programa!'
 
@@ -11,10 +13,49 @@ yes_options = ['Si', 'si', 'sí', 'Sí', 'SI']
 no_options = ['No', 'no', 'NO']
 
 regex = r'((S|s)(I|i|í))|((N|n)(O|o))'
+regex_path = r'(C|c)amino\s?[123]:?\s?.*'
 
 
-def menu():
-    pass
+def view_2():
+    print('Antes de continuar...')
+    stop = False
+    while not stop:
+        option = input('¿Quieres ser el caballero de esta historia?: ')
+        match_obj = re.match(regex, option)
+        if match_obj is not None:
+            my_tuple = match_obj.span()
+            f_option = option[my_tuple[0]:my_tuple[1]]
+            if f_option in yes_options:
+                pass
+            elif f_option in no_options:
+                stop = True
+                print('De acuerdo. Continuemos...')
+            else:
+                print('Por favor, escribe una opción valida.')
+        else:
+            print('Por favor, escribe una opción valida.')
+
+    print(story_description)
+    stop = False
+    while not stop:
+        option = input('¿Cuál camino deseas elegir?: ')
+        match_obj = re.match(regex_path, option)
+        if match_obj is not None:
+            my_tuple = match_obj.span()
+            f_option = option[my_tuple[0]:my_tuple[1]]
+            if f_option in path_1:
+                print('it worked')
+                stop = True
+            elif f_option in path_2:
+                print('it worked')
+                stop = True
+            elif f_option in path_3:
+                print('it worked')
+                stop = True
+            else:
+                print('Por favor, escribe una opción valida.')
+        else:
+            print('Por favor, escribe una opción valida.')
 
 
 def view_1(name):
@@ -28,7 +69,7 @@ def view_1(name):
             my_tuple = match_obj.span()
             f_option = option[my_tuple[0]:my_tuple[1]]
             if f_option in yes_options:
-                menu()
+                view_2()
             elif f_option in no_options:
                 stop = True
                 print('Gracias por usar el programa 😊')
