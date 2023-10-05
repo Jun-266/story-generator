@@ -1,5 +1,5 @@
 import re
-from src.model.story import story_description
+from src.model.story import story, story_description
 from src.model.story import path_1_opt, path_2_opt, path_3_opt
 
 welcome_message = '¡Bienvenido al programa!'
@@ -16,7 +16,11 @@ regex = r'((S|s)(I|i|í))|((N|n)(O|o))'
 regex_path = r'(C|c)amino\s?[123]:?\s?.*'
 
 
-def view_2():
+def view_3(name):
+    pass
+
+
+def view_2(name):
     print('Antes de continuar...')
     stop = False
     while not stop:
@@ -26,7 +30,7 @@ def view_2():
             my_tuple = match_obj.span()
             f_option = option[my_tuple[0]:my_tuple[1]]
             if f_option in yes_options:
-                pass
+                view_3(name)
             elif f_option in no_options:
                 stop = True
                 print('De acuerdo. Continuemos...')
@@ -69,7 +73,7 @@ def view_1(name):
             my_tuple = match_obj.span()
             f_option = option[my_tuple[0]:my_tuple[1]]
             if f_option in yes_options:
-                view_2()
+                view_2(name)
             elif f_option in no_options:
                 stop = True
                 print('Gracias por usar el programa 😊')

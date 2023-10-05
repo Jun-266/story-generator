@@ -2,36 +2,37 @@ from pyformlang.fst import FST
 
 transducer = FST()
 
-my_name = 'Jun'
-name_to_r = 'Pepe'
-i = 0
-transducer.add_start_state('q' + str(i))
-while i < len(name_to_r):
 
-    if i < len(my_name):
-        transducer.add_transition('q' + str(i), name_to_r[i], 'q' + str((i + 1)), [my_name[i]])
+def replace_name(username, name_to_replace):
+    i = 0
+    transducer.add_start_state('q' + str(i))
+
+    if len(username) < len(name_to_replace):
+        while i < len(name_to_replace):
+
+            if i < len(username):
+                transducer.add_transition('q' + str(i), name_to_replace[i], 'q' + str((i + 1)),
+                                          [username[i]])
+            else:
+                transducer.add_transition('q' + str(i), name_to_replace[i], 'q' + str((i + 1)),
+                                          [''])
+
+            i += 1
     else:
-        transducer.add_transition('q' + str(i), name_to_r[i], 'q' + str((i + 1)), [''])
+        while i < len(username):
 
-    i += 1
+            if i < len(name_to_replace):
+                transducer.add_transition('q' + str(i), name_to_replace[i], 'q' + str((i + 1)),
+                                          [username[i]])
+            else:
+                transducer.add_transition('q' + str(i), 'epsilon', 'q' + str((i + 1)),
+                                          [username[i]])
 
-transducer.add_final_state('q' + str(i))
-print(''.join(list(transducer.translate('Pepe'))[0]))
+            i += 1
 
+    transducer.add_final_state('q' + str(i))
 
-
-
-
-
-
-transducer.add_transition('q0', 'a', 'q1', ['x'])
-transducer.add_transition('q1', 'a', 'q2', ['x'])
-transducer.add_transition('q1', 'b', 'q2', ['y'])
-transducer.add_transition('q2', 'a', 'q2', ['x'])
-transducer.add_transition('q2', 'b', 'q2', ['y'])
-transducer.add_transition('q2', 'b', 'q3', ['y'])
-
-transducer.add_start_state('q0')
-transducer.add_final_state('q3')
-
-print(''.join(list(transducer.translate('ababb'))[0]))
+    if len(list(transducer.translate(name_to_replace))[0]) == 0:
+        return 'No hay coincidencias'
+    else:
+        return ''.join(list(transducer.translate(name_to_replace))[0])
