@@ -4,9 +4,6 @@ story_description = '''
     quien ha sido secuestrada por un malvado mago llamado Malachar. 
     Tu misión es rescatarla y devolverla a salvo a tu lado. 
     Tienes tres caminos por delante:
-    Camino 1: La busqueda en el Bosque Encantado.
-    Camino 2: La busqueda en el Castillo Oscuro.
-    Camino 3: La busqueda en las Montañas Heladas.
 '''
 
 path_1 = ['Camino 1', 'camino 1', 'Camino1', 'camino1', 'Camino 1:', 'camino 1:']

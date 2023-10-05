@@ -1,3 +1,5 @@
+import re
 class RegularExpression:
-    def __init__(self):
-        self.re = None
+
+    def checkAnswer(chain, chain2):
+        return re.search(chain,chain2)

@@ -1,6 +1,7 @@
 import re
-from src.model.story import story_description
-from src.model.story import path_1, path_2, path_3
+from model.story import story_description
+from model.story import path_1, path_2, path_3
+from model.TextProcessor import TextProcessor
 
 welcome_message = '¡Bienvenido al programa!'
 
@@ -14,6 +15,7 @@ no_options = ['No', 'no', 'NO']
 
 regex = r'((S|s)(I|i|í))|((N|n)(O|o))'
 regex_path = r'(C|c)amino\s?[123]:?\s?.*'
+regex_opt=r'[1|2]{1}'
 
 
 def view_2():
@@ -38,24 +40,41 @@ def view_2():
     print(story_description)
     stop = False
     while not stop:
-        option = input('¿Cuál camino deseas elegir?: ')
+        print(TextProcessor.printParts())
+        option = input('¿Cuál camino deseas elegir?(Ej: Camino 1): ')
         match_obj = re.match(regex_path, option)
         if match_obj is not None:
             my_tuple = match_obj.span()
             f_option = option[my_tuple[0]:my_tuple[1]]
-            if f_option in path_1:
-                print('it worked')
-                stop = True
-            elif f_option in path_2:
-                print('it worked')
-                stop = True
-            elif f_option in path_3:
-                print('it worked')
-                stop = True
+            if f_option in path_1|path_2|path_3:
+                TextProcessor.developStory(f_option)  
             else:
                 print('Por favor, escribe una opción valida.')
         else:
             print('Por favor, escribe una opción valida.')
+
+        conti=False
+        while not conti:
+            option = input('''
+                        Opciones de configuración de las historia:
+                        1. Leer historia
+                        2. Cambiar nombre de personajes
+                        ''')
+        
+            if re.match(regex_opt, option) is not None:
+                if option == 1:
+                    print(TextProcessor.readStory())
+                else:
+                    current=input('Digite el nombre actual del personaj')
+                    new=input('Digite el nuevo nombre')
+                    TextProcessor.useTransducer(current,new)
+                
+                conti=True
+            else:
+                print('Esta entrada no es valida')
+        
+        if TextProcessor.checkStory():
+            stop = True
 
 
 def view_1(name):
@@ -72,6 +91,20 @@ def view_1(name):
                 view_2()
             elif f_option in no_options:
                 stop = True
+                option = input('¿Quieres agregar algún comentario')
+                match_obj = re.match(regex, option)
+                if match_obj is not None:
+                    my_tuple = match_obj.span()
+                    f_option = option[my_tuple[0]:my_tuple[1]]
+                    if f_option in yes_options:
+                        conti = False
+                        while not conti:
+                            suggestion = input('Escriberlo en estos formatos: (Me gustaría que...) o (No me gustó...)')
+                            if TextProcessor.grammarProcessor(suggestion):
+                                print('Gracias por la sugerencia')
+                            else:
+                                print('La entrada es inválida')
+
                 print('Gracias por usar el programa 😊')
             else:
                 print('Por favor, escribe una opción valida.')

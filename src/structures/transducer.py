@@ -1,6 +1,5 @@
 from pyformlang.fst import FST
 
-
 class Transcuder:
 
     def __init__(self):
