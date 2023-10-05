@@ -1,6 +1,6 @@
 import re
 from src.model.story import story_description
-from src.model.story import path_1, path_2, path_3
+from src.model.story import path_1_opt, path_2_opt, path_3_opt
 
 welcome_message = '¡Bienvenido al programa!'
 
@@ -43,13 +43,13 @@ def view_2():
         if match_obj is not None:
             my_tuple = match_obj.span()
             f_option = option[my_tuple[0]:my_tuple[1]]
-            if f_option in path_1:
+            if f_option in path_1_opt:
                 print('it worked')
                 stop = True
-            elif f_option in path_2:
+            elif f_option in path_2_opt:
                 print('it worked')
                 stop = True
-            elif f_option in path_3:
+            elif f_option in path_3_opt:
                 print('it worked')
                 stop = True
             else:

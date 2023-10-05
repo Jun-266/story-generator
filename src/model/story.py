@@ -4,23 +4,15 @@ story_description = '''
     quien ha sido secuestrada por un malvado mago llamado Malachar. 
     Tu misión es rescatarla y devolverla a salvo a tu lado. 
     Tienes tres caminos por delante:
-    Camino 1: La busqueda en el Bosque Encantado.
-    Camino 2: La busqueda en el Castillo Oscuro.
-    Camino 3: La busqueda en las Montañas Heladas.
+    Camino 1: {}
+    Camino 2: {}
+    Camino 3: {}
 '''
 
-path_1 = ['Camino 1', 'camino 1', 'Camino1', 'camino1', 'Camino 1:', 'camino 1:']
-path_2 = ['Camino 2', 'camino 2', 'Camino2', 'camino2', 'Camino 2:', 'camino 2:']
-path_3 = ['Camino 3', 'camino 3', 'Camino3', 'camino3', 'Camino 3:', 'camino 3:']
+path_1 = 'La busqueda en el Bosque Encantado'
+path_2 = 'La busqueda en el Castillo Oscuro'
+path_3 = 'La busqueda en las Montañas Heladas'
 
-choices = {}
-
-import re
-my_string = 'No'
-regex = r'(N|n)(O|o)'
-match_object = re.match(regex, my_string)
-# print(match_object)
-# match_object = re.search(regex, my_string)
-# my_tuple = match_object.span()
-# print(match_object)
-# print(my_string[my_tuple[0]:my_tuple[1]])
+path_1_opt = ['Camino 1', 'camino 1', 'Camino1', 'camino1', 'Camino 1:', 'camino 1:']
+path_2_opt = ['Camino 2', 'camino 2', 'Camino2', 'camino2', 'Camino 2:', 'camino 2:']
+path_3_opt = ['Camino 3', 'camino 3', 'Camino3', 'camino3', 'Camino 3:', 'camino 3:']
