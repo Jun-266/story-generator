@@ -90,6 +90,28 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(process_str_6 in no_options, True)
         self.assertEqual(process_str_7 in no_options, True)
 
+    def test_choosen_path(self):
+        re_for_path = regular_expressions['path_choice']
+        input_1 = 'camino 1: la senda luminosa'
+        input_2 = 'Camino2'
+        input_3 = 'camino3: La venganza de los sith'
+        input_4 = 'Eligire la opción 1.'
+        input_5 = 'Camino 2 voluntad ferrea'
+
+        match_obj_1 = re.match(re_for_path, input_1)
+        match_obj_2 = re.match(re_for_path, input_2)
+        match_obj_3 = re.match(re_for_path, input_3)
+        match_obj_4 = re.match(re_for_path, input_4)
+        match_obj_5 = re.match(re_for_path, input_5)
+
+        self.assertEqual(match_obj_1 is not None, True)
+        self.assertEqual(match_obj_2 is not None, True)
+        self.assertEqual(match_obj_3 is not None, True)
+        self.assertEqual(match_obj_4 is not None, False)
+        self.assertEqual(match_obj_5 is not None, True)
+
+        self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()
