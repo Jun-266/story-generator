@@ -36,21 +36,21 @@ combinaciones de la palabra *"Si"* en el momento que el usuario escribe una opci
 
 ### ID caso de prueba: RE-02
 **Descripción de la prueba:** Probar que la expresión regular `((S|s)(I|i|í))|((N|n)(O|o))` reconoce las diferentes
-combinaciones de la palabra *"Si"* en el momento que el usuario escribe una opción en el menú del programa.
+combinaciones de la palabra *"No"* en el momento que el usuario escribe una opción en el menú del programa.
 
 **Supuestos y condiciones previas:**
 * La expresión regular `((S|s)(I|i|í))|((N|n)(O|o))` debe estar previamente definida.
 * Los datos a procesar serán cadenas de texto sin caracteres numéricos.
-* Se procesarán combinaciones de la palabra *"Si"*.
+* Se procesarán combinaciones de la palabra *"No"*.
 
 **Datos de prueba:**
-* Entrada 1: `"Si me gustaría continuar la historia"`
-* Entrada 2: `"si quiero continuar con la historia."`
-* Entrada 3: `"Si, estoy de acuerdo"`
-* Entrada 4: `"siiiiiiiiiiiii"`
-* Entrada 5: `"Sí mi loco"`
-* Entrada 6: `"sí, está bien"`
-* Entrada 7: `"SI VOY A CONTINUAR"`
+* Entrada 1: `"no me gustaría continuar la historia"`
+* Entrada 2: `"No quiero continuar con la historia."`
+* Entrada 3: `"NO estoy de acuerdo"`
+* Entrada 4: `"nooooooooooooo"`
+* Entrada 5: `"Nel, no voy a continuar"`
+* Entrada 6: `"Honestamente, no me parece bien"`
+* Entrada 7: `"NO VOY A SEGUIR"`
 
 **Pasos a ejecutar:**
 * Importar el módulo `re` de Python para procesar expresiones regulares.
@@ -60,10 +60,10 @@ combinaciones de la palabra *"Si"* en el momento que el usuario escribe una opci
 * Llamar a la función `span` del objeto generado `Match`.
 
 **Resultado esperado:**
-* Se procesan exitosamente las combinaciones de la palabra *"Si"*.
+* Se procesan exitosamente las combinaciones de la palabra *"No"*.
 
 **Resultado real y condiciones posteriores:**
-* Si la prueba es exitosa, las combinaciones aceptadas por la expresión regular son `'Si', 'si', 'sí', 'Sí', 'SI', 'sI'`
-* Si la prueba falla, entonces las cadenas de entrada no contenian ninguna combinación de la palabra *"Si"*.
+* Si la prueba es exitosa, las combinaciones aceptadas por la expresión regular son `'No', 'no', 'NO', 'nO'`.
+* Si la prueba falla, entonces las cadenas de entrada no contenian ninguna combinación de la palabra *"No"*.
 
 ---
