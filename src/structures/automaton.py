@@ -3,10 +3,10 @@ from pyformlang.finite_automaton import DeterministicFiniteAutomaton, State
 
 class Automaton:
     def __init__(self):
-        self.createAutomaton()
         self.aut = None
+        
 
-    def createAutomaton(self):
+    def createAutomaton(self, chain):
         q0=State('q0')
         q1=State('q1')
         q2=State('q2')
@@ -27,14 +27,13 @@ class Automaton:
         q17=State('q17')
         q18=State('q18')
         q19=State('q19')
-        self.aut=DeterministicFiniteAutomaton( 
+        aut=DeterministicFiniteAutomaton( 
             states={q0,q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12,q13,q14,q15,q16,q17,q18,q19}, 
             input_symbols={"1","2","3"}, 
             start_state=q0,
-            final_states={q4,q7,q9,q10,q11})
+            final_states={q4,q7,q9,q10,q11,q13,q14,q15,q16,q17,q18})
         
-        df=self.aut
-        df.add_transitions([(q0,"1",q1), 
+        aut.add_transitions([(q0,"1",q1), 
                             (q0,"2",q2), 
                             (q0,"3",q3), 
                             (q1,"1",q4),
@@ -58,8 +57,9 @@ class Automaton:
                             (q12,"1",q17),
                             (q12,"2",q18),
                             (q12,"3",q19)])
+        return aut.accepts(chain)
         
     def checkText(self,chain):
-        return self.aut.accepts(chain)
+        return self.createAutomaton(chain)
         
 
