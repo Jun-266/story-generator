@@ -98,7 +98,6 @@ class TextProcessor:
     
     def developStory(self, answer):
         ans = answer.split()
-        print("Esto es lo que se guarda en los estados"+ans[1])
         self.state = self.state+ans[1]
         self.story = self.story+self.parts[self.state]+"\n"
         

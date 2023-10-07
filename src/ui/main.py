@@ -1,6 +1,6 @@
 import re
 from model.story import story_description
-from model.story import path_1, path_2, path_3
+from model.story import path_1_opt, path_2_opt, path_3_opt
 from model.textprocessor import TextProcessor
 
 welcome_message = '¡Bienvenido al programa!'
@@ -18,6 +18,9 @@ regex = r'((S|s)(I|i|í))|((N|n)(O|o))'
 regex_path = r'(C|c)amino\s?[123]{1}\s?$'
 regex_opt=r'1{1}|2{1}'
 
+def view_3(name):
+    pass
+
 
 def view_2(txtp):
     print('Antes de continuar...')
@@ -30,7 +33,7 @@ def view_2(txtp):
             my_tuple = match_obj.span()
             f_option = option[my_tuple[0]:my_tuple[1]]
             if f_option in yes_options:
-                pass
+                view_3(name)
             elif f_option in no_options:
                 stop = True
                 print('De acuerdo. Continuemos...')
@@ -50,16 +53,16 @@ def view_2(txtp):
             if match_obj is not None:
                 my_tuple = match_obj.span()
                 f_option = option[my_tuple[0]:my_tuple[1]]
-                if f_option in path_1:
-                    print("1")
+                if f_option in path_1_opt:
+
                     next=True
                     txtp.developStory(f_option)
-                elif f_option in path_2:
-                    print("2")
+                elif f_option in path_2_opt:
+                    
                     next=True
                     txtp.developStory(f_option)
-                elif f_option in path_3:
-                    print("3")
+                elif f_option in path_3_opt:
+                    
                     next=True
                     txtp.developStory(f_option)
                 else:
@@ -84,19 +87,24 @@ def view_1(name):
         if match_obj is not None:
             my_tuple = match_obj.span()
             f_option = option[my_tuple[0]:my_tuple[1]]
+
             if f_option in yes_options:
                 view_2(txtp)
             elif f_option in no_options:
                 stop = True
                 option = input('¿Quieres agregar algún comentario? ')
                 match_obj = re.match(regex, option)
+
                 if match_obj is not None:
                     my_tuple = match_obj.span()
                     f_option = option[my_tuple[0]:my_tuple[1]]
+
                     if f_option in yes_options:
                         conti = False
+
                         while not conti:
                             suggestion = input('Escribelo en estos formatos: (Me gusta que...) o (No me gusta...)')
+
                             if txtp.grammarProcessor(suggestion):
                                 print('Gracias por la sugerencia')
                                 conti=True

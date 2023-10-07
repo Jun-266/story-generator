@@ -18,5 +18,4 @@ class Gramatic:
         for i in range(3):
            if self.gr.contains(chain[i])!= True:
                 return False
-
         return True
