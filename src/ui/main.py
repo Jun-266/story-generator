@@ -1,7 +1,7 @@
 import re
-from model.story import story_description
-from model.story import path_1_opt, path_2_opt, path_3_opt
-from model.textprocessor import TextProcessor
+from src.model.story import story_description
+from src.model.story import path_1_opt, path_2_opt, path_3_opt
+from src.model.text_processor import TextProcessor
 
 welcome_message = '¡Bienvenido al programa!'
 
@@ -16,9 +16,10 @@ no_options = ['No', 'no', 'NO', 'nO']
 
 regex = r'((S|s)(I|i|í))|((N|n)(O|o))'
 regex_path = r'(C|c)amino\s?[123]:?\s?.*'
-regex_opt=r'1{1}|2{1}'
+regex_opt = r'1{1}|2{1}'
 
-def view_3(name):
+
+def view_3():
     pass
 
 
@@ -33,7 +34,8 @@ def view_2(txtp):
             my_tuple = match_obj.span()
             f_option = option[my_tuple[0]:my_tuple[1]]
             if f_option in yes_options:
-                view_3(name)
+                # view_3(name)
+                pass
             elif f_option in no_options:
                 stop = True
                 print('De acuerdo. Continuemos...')
@@ -45,34 +47,31 @@ def view_2(txtp):
     print(story_description)
     stop = False
     while not stop:
-        next= False
+        next = False
         while not next:
-            print(txtp.printParts())
+            print(txtp.print_parts())
             option = input('¿Cuál camino deseas elegir?(Ej: Camino 1): ')
             match_obj = re.match(regex_path, option)
             if match_obj is not None:
                 my_tuple = match_obj.span()
                 f_option = option[my_tuple[0]:my_tuple[1]]
                 if f_option in path_1_opt:
-
-                    next=True
-                    txtp.developStory(f_option)
+                    next = True
+                    txtp.develop_story(f_option)
                 elif f_option in path_2_opt:
-                    
-                    next=True
-                    txtp.developStory(f_option)
+                    next = True
+                    txtp.develop_story(f_option)
                 elif f_option in path_3_opt:
-                    
-                    next=True
-                    txtp.developStory(f_option)
+                    next = True
+                    txtp.develop_story(f_option)
                 else:
                     print('Por favor, escribe una opción valida.')
             else:
                 print('Por favor, escribe una opción valida.')
 
-        print(txtp.readStory())
+        print(txtp.read_story())
         
-        if txtp.checkStory():
+        if txtp.check_story():
             stop = True
 
 
@@ -81,7 +80,7 @@ def view_1(name):
     print(description)
     stop = False
     while not stop:
-        txtp=TextProcessor()
+        txtp = TextProcessor()
         option = input('¿Te interesa seguir con la aventura?: ')
         match_obj = re.match(regex, option)
         if match_obj is not None:
@@ -105,9 +104,9 @@ def view_1(name):
                         while not conti:
                             suggestion = input('Escribelo en estos formatos: (Me gusta que...) o (No me gusta...)')
 
-                            if txtp.grammarProcessor(suggestion):
+                            if txtp.grammar_processor(suggestion):
                                 print('Gracias por la sugerencia')
-                                conti=True
+                                conti = True
                             else:
                                 print('La entrada es inválida')
 
