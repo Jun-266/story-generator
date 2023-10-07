@@ -15,7 +15,7 @@ yes_options = ['Si', 'si', 'sí', 'Sí', 'SI']
 no_options = ['No', 'no', 'NO']
 
 regex = r'((S|s)(I|i|í))|((N|n)(O|o))'
-regex_path = r'(C|c)amino\s?[123]{1}\s?$'
+regex_path = r'(C|c)amino\s?[123]:?\s?.*'
 regex_opt=r'1{1}|2{1}'
 
 def view_3(name):
