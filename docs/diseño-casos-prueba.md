@@ -179,4 +179,102 @@ escribe una opción en el menú del programa.
 
 ## Gramáticas.
 
----
+### ID caso de prueba: GR-01
+**Descripción de la prueba:**
+Probar que la GIC `S -> n S | o | B` 
+                  `B -> m B | e | C `
+                  `C -> g C | u C | s C | t C| a | E`
+                  `E -> q E | u E | e` 
+reconoce las diferentes combinaciones de la palabra *"Me gusta que"* en el momento que el usuario escribe una opción en el menú del programa.
+
+**Supuestos y condiciones previas:**
+* La GIC debe estar previamente definida.
+* Los datos a procesar serán cadenas de texto sin caracteres numéricos y/o especiales.
+* Se procesarán combinaciones de la palabra *"Me gusta que"*.
+
+**Datos de prueba:**
+* Entrada 1: `"Me gusta que"`
+* Entrada 2: `"Me gusta"`
+* Entrada 3: `"Si, estoy de acuerdo"`
+* Entrada 4: `"Me"`
+* Entrada 5: `"mE gusta que la historia`
+* Entrada 6: `"Me gust aa"`
+* Entrada 7: `"Me gustaa que"`
+
+**Pasos a ejecutar:**
+* Importar la clase `Gramatic` del archivo `gramatic.py`.
+* Crear una instancia de la clase `Gramatiic`.
+* Llamar a la función `checkGramatic` de la clase `Gramatic`.
+
+**Resultado esperado:**
+* Se procesan exitosamente las combinaciones de la palabra *"Me gusta que"*.
+
+**Resultado real y condiciones posteriores:**
+* Si la prueba es exitosa, la combinacion aceptada por la gramatica es `"Me gusta que"` y es rechazada por el resto de entradas.
+
+
+### ID caso de prueba: GR-03
+**Descripción de la prueba:**
+Probar que la GIC `S -> n S | o | B` 
+                  `B -> m B | e | C `
+                  `C -> g C | u C | s C | t C| a | E`
+                  `E -> q E | u E | e` 
+reconoce las diferentes combinaciones de la palabra *" No me gusta "* en el momento que el usuario escribe una opción en el menú del programa.
+
+**Supuestos y condiciones previas:**
+* La GIC debe estar previamente definida.
+* Los datos a procesar serán cadenas de texto sin caracteres numéricos y/o especiales.
+* Se procesarán combinaciones de la palabra *"No me gusta"*.
+
+**Datos de prueba:**
+* Entrada 1: `"No me gusta"`
+* Entrada 2: `"No me"`
+* Entrada 3: `"No"`
+* Entrada 4: `"Me"`
+* Entrada 5: `"No me gusta los finales"`
+* Entrada 6: `"No me gust aa"`
+* Entrada 7: `"No me gustaa que"`
+
+**Pasos a ejecutar:**
+* Importar la clase `Gramatic` del archivo `gramatic.py`.
+* Crear una instancia de la clase `Gramatiic`.
+* Llamar a la función `checkGramatic` de la clase `Gramatic`.
+
+**Resultado esperado:**
+* Se procesan exitosamente las combinaciones de la palabra *"No me gusta"*.
+
+**Resultado real y condiciones posteriores:**
+* Si la prueba es exitosa, la combinacion aceptada por la gramatica es `"No me gusta"` y es rechazada por el resto de entradas.
+
+### ID caso de prueba: GR-03
+**Descripción de la prueba:**
+Probar que la GIC `S -> n S | o | B` 
+                  `B -> m B | e | C `
+                  `C -> g C | u C | s C | t C| a | E`
+                  `E -> q E | u E | e` 
+que no reconoce las diferentes combinaciones de caracateres diferentes a *" No me gusta, Me gusta que "*en el momento que el usuario escribe una opción en el menú del programa.
+
+**Supuestos y condiciones previas:**
+* La GIC debe estar previamente definida.
+* Los datos a procesar serán cadenas de texto sin caracteres numéricos y/o especiales.
+* Se procesarán diferentes cadenas de caracteres.
+
+**Datos de prueba:**
+* Entrada 1: `"Me guartaria que fuera diferente"`
+* Entrada 2: `"Excelente historia"`
+* Entrada 3: `"Para nada ma llamó la..."`
+* Entrada 4: `"Me"`
+* Entrada 5: `"Buena historia"`
+* Entrada 6: `"Interesante"`
+* Entrada 7: `"Muy buena"`
+
+**Pasos a ejecutar:**
+* Importar la clase `Gramatic` del archivo `gramatic.py`.
+* Crear una instancia de la clase `Gramatiic`.
+* Llamar a la función `checkGramatic` de la clase `Gramatic`.
+
+**Resultado esperado:**
+* Fallan exitosamente las cadenas de caracteres.
+
+**Resultado real y condiciones posteriores:**
+* Si la prueba es exitosa, las combinacion rechazadas por la gramatica es cualquie cadena diferente a `"No me gusta, Me gusta que"`.
