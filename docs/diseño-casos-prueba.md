@@ -111,69 +111,55 @@ al menos la palabra *"Camino"* y un número del `1` al `3`.
 
 ### ID caso de prueba: T-01
 **Descripción de la prueba:**
-Probar que la expresión regular `(C|c)amino\s?[123]:?\s?.*` reconoce las diferentes combinaciones de
-la palabra *"Camino"* acompañado de una serie de caracteres alfanuméricos en el momento que el usuario
-escribe una opción en el menú del programa.
+Probar que el transductor puede reemplazar un nombre de longitud inferior ingresado por el usuario por 
+otro nombre de longitud mayor que hace parte de la historia.
 
 **Supuestos y condiciones previas:**
-* La expresión regular `(C|c)amino\s?[123]:?\s?.*` debe estar previamente definida.
-* Los datos a procesar serán cadenas de texto con caracteres alfanuméricos.
-* Se procesarán combinaciones de la palabra *"Camino"* junto con más caracteres alfanuméricos.
+* El transductor debe estar previamente definido.
+* Los datos a procesar serán cadenas de texto sin caracteres numéricos.
 
 **Datos de prueba:**
-* Entrada 1: `"camino 1: la senda luminosa"`
-* Entrada 2: `"Camino2"`
-* Entrada 3: `"camino3: La venganza de los sith"`
-* Entrada 4: `"Eligire la opción 1."`
-* Entrada 5: `"Camino 2 voluntad ferrea"`
+* Entrada 1: `"Pepe", "William"`
+* Entrada 2: `"Kenshi", "Takahashi"`
 
 **Pasos a ejecutar:**
-* Importar el módulo `re` de Python para procesar expresiones regulares.
-* Importar el diccionario `regular_expressions` del archivo `regular_expression.py`.
-* Acceder al elemento `path_choice` del diccionario anterior.
-* Llamar a la función `match` del módulo `re`.
-* Llamar a la función `span` del objeto generado `Match`.
+* Importar la clase `FST` del paquete/módulo `pyformlang.fst` de Python para crear el transductor.
+* Instanciar un objeto con la clase `FST`.
+* Importar la función `replace_name` del archivo `transducer.py`.
+* Llamar a la función `replace_name`.
 
 **Resultado esperado:**
-* Se procesan exitosamente las combinaciones de la palabra *"Camino"* junto con más caracteres alfanuméricos.
+* Se reemplaza y se retorna exitosamente el nombre ingresado por el usuario por otro de la historia.
 
 **Resultado real y condiciones posteriores:**
-* Si la prueba es exitosa, las combinaciones aceptadas por la expresión regular serán todas aquelas que contengan
-  al menos la palabra *"Camino"* y un número del `1` al `3`.
-* Si la prueba falla, entonces las cadenas de entrada no contenian ninguna combinación de la palabra *"Camino"*.
+* Si la prueba es exitosa, se retornará el nombre que fue reemplazado por uno presente en la historia.
+* Si la prueba falla, entonces se retornará una candena con el valor de `"No hay coincidencias"`
 
 ### ID caso de prueba: T-02
 **Descripción de la prueba:**
-Probar que la expresión regular `(C|c)amino\s?[123]:?\s?.*` reconoce las diferentes combinaciones de
-la palabra *"Camino"* acompañado de una serie de caracteres alfanuméricos en el momento que el usuario
-escribe una opción en el menú del programa.
+Probar que el transductor puede reemplazar un nombre de longitud superior ingresado por el usuario por
+otro nombre de longitud menor que hace parte de la historia.
 
 **Supuestos y condiciones previas:**
-* La expresión regular `(C|c)amino\s?[123]:?\s?.*` debe estar previamente definida.
-* Los datos a procesar serán cadenas de texto con caracteres alfanuméricos.
-* Se procesarán combinaciones de la palabra *"Camino"* junto con más caracteres alfanuméricos.
+* El transductor debe estar previamente definido.
+* Los datos a procesar serán cadenas de texto sin caracteres numéricos.
 
 **Datos de prueba:**
-* Entrada 1: `"camino 1: la senda luminosa"`
-* Entrada 2: `"Camino2"`
-* Entrada 3: `"camino3: La venganza de los sith"`
-* Entrada 4: `"Eligire la opción 1."`
-* Entrada 5: `"Camino 2 voluntad ferrea"`
+* Entrada 1: `"Elizabeth", "Dina"`
+* Entrada 2: `"Orochimaru", "Sasuke"`
 
 **Pasos a ejecutar:**
-* Importar el módulo `re` de Python para procesar expresiones regulares.
-* Importar el diccionario `regular_expressions` del archivo `regular_expression.py`.
-* Acceder al elemento `path_choice` del diccionario anterior.
-* Llamar a la función `match` del módulo `re`.
-* Llamar a la función `span` del objeto generado `Match`.
+* Importar la clase `FST` del paquete/módulo `pyformlang.fst` de Python para crear el transductor.
+* Instanciar un objeto con la clase `FST`.
+* Importar la función `replace_name` del archivo `transducer.py`.
+* Llamar a la función `replace_name`.
 
 **Resultado esperado:**
-* Se procesan exitosamente las combinaciones de la palabra *"Camino"* junto con más caracteres alfanuméricos.
+* Se reemplaza y se retorna exitosamente el nombre ingresado por el usuario por otro de la historia.
 
 **Resultado real y condiciones posteriores:**
-* Si la prueba es exitosa, las combinaciones aceptadas por la expresión regular serán todas aquelas que contengan
-  al menos la palabra *"Camino"* y un número del `1` al `3`.
-* Si la prueba falla, entonces las cadenas de entrada no contenian ninguna combinación de la palabra *"Camino"*.
+* Si la prueba es exitosa, se retornará el nombre que fue reemplazado por uno presente en la historia.
+* Si la prueba falla, entonces se retornará una candena con el valor de `"No hay coincidencias"`
 
 ---
 
