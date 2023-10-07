@@ -1,6 +1,7 @@
 import re
-from src.model.story import story_description
+from src.model.story import story_description, story, knight, lady, villain
 from src.model.story import path_1_opt, path_2_opt, path_3_opt
+from src.structures.transducer import replace_name
 from src.model.text_processor import TextProcessor
 
 welcome_message = '¡Bienvenido al programa!'
@@ -19,11 +20,7 @@ regex_path = r'(C|c)amino\s?[123]:?\s?.*'
 regex_opt = r'1{1}|2{1}'
 
 
-def view_3():
-    pass
-
-
-def view_2(txtp):
+def view_2(txtp, name):
     print('Antes de continuar...')
     
     stop = False
@@ -34,17 +31,19 @@ def view_2(txtp):
             my_tuple = match_obj.span()
             f_option = option[my_tuple[0]:my_tuple[1]]
             if f_option in yes_options:
-                # view_3(name)
-                pass
+                r_name = replace_name(name, knight)
+                new_story = story.format(r_name, lady, villain)
+                print(new_story)
+                stop = True
             elif f_option in no_options:
                 stop = True
+                print(story_description)
                 print('De acuerdo. Continuemos...')
             else:
                 print('Por favor, escribe una opción valida.')
         else:
             print('Por favor, escribe una opción valida.')
 
-    print(story_description)
     stop = False
     while not stop:
         next = False
@@ -88,7 +87,7 @@ def view_1(name):
             f_option = option[my_tuple[0]:my_tuple[1]]
 
             if f_option in yes_options:
-                view_2(txtp)
+                view_2(txtp, name)
             elif f_option in no_options:
                 stop = True
                 option = input('¿Quieres agregar algún comentario? ')

@@ -13,12 +13,9 @@ story = '''
     quien ha sido secuestrada por un malvado mago llamado {}. 
     Tu misión es rescatarla y devolverla a salvo a tu lado. 
     Tienes tres caminos por delante:
-    Camino 1: {}
-    Camino 2: {}
-    Camino 3: {}
 '''
 
-story_description = story.format(knight, lady, villain, path_1, path_2, path_3)
+story_description = story.format(knight, lady, villain)
 
 path_1_opt = ['Camino 1', 'camino 1', 'Camino1', 'camino1', 'Camino 1:', 'camino 1:']
 path_2_opt = ['Camino 2', 'camino 2', 'Camino2', 'camino2', 'Camino 2:', 'camino 2:']
