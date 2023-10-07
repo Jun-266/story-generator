@@ -15,7 +15,10 @@ class Gramatic:
 
 
     def checkGramatic(self, chain):
-        for i in range(3):
-           if self.gr.contains(chain[i])!= True:
-                return False
-        return True
+        if(len(chain)>=3):
+            for i in range(3):
+                if self.gr.contains(chain[i])!= True:
+                    return False
+            return True
+        else:
+            return False
