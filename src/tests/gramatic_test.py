@@ -9,7 +9,7 @@ class MyTestCase(unittest.TestCase):
         input_1 = 'Me gusta que'
         input_2 = 'Me gusta'
         input_3 = 'Me'
-        input_4 = 'mE gusta que la historia...'
+        input_4 = 'mE gusta que la historia'
         input_5 = 'Me gust aa'
         input_6 = 'Me gustaa que'
 
@@ -23,7 +23,7 @@ class MyTestCase(unittest.TestCase):
     def test_no_gusta(self):
         gr2 = Gramatic()
         input_1 = 'No me gusta que'
-        input_2 = 'No me '
+        input_2 = 'No me'
         input_3 = 'No'
         input_4 = 'No me gusta los finales'
         input_5 = 'No me gust aa'
