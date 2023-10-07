@@ -11,8 +11,8 @@ description = '''
     Puedes modificar nombres y alterar el flujo de algunos eventos de la historia.
 '''
 
-yes_options = ['Si', 'si', 'sí', 'Sí', 'SI', 'sI']
-no_options = ['No', 'no', 'NO', 'nO']
+yes_options = ['Si', 'si', 'sí', 'Sí', 'SI']
+no_options = ['No', 'no', 'NO']
 
 regex = r'((S|s)(I|i|í))|((N|n)(O|o))'
 regex_path = r'(C|c)amino\s?[123]:?\s?.*'
